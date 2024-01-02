@@ -25,6 +25,6 @@ export class Group {
   group_creator_id: User;
 
   @ManyToMany(() => User)
-  @JoinTable({ name: 'groupMembers' })
+  @JoinTable({ name: 'GroupMembers' })
   user: User[];
 }

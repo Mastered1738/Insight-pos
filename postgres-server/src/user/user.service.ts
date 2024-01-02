@@ -15,16 +15,6 @@ export class UserService {
   }
 
   async getUser(getUserDto: GetUserDto): Promise<User> {
-    console.log('====================================');
-    console.log(
-      await this.userRepository.findOne({
-        where: {
-          username: getUserDto.username,
-          password: getUserDto.password,
-        },
-      }),
-    );
-    console.log('====================================');
     return await this.userRepository.findOne({
       where: {
         username: getUserDto.username,

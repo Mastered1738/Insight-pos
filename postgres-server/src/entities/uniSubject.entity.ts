@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('UniSubject')
@@ -21,7 +15,6 @@ export class UniSubject {
   @Column()
   subject_description: string;
 
-  @ManyToMany(() => User)
-  @JoinTable({ name: 'subjectMembers' })
-  user: User[];
+  @ManyToMany(() => User, (user) => user.uniSubject)
+  students: User[];
 }

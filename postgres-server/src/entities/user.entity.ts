@@ -38,11 +38,21 @@ export class User {
   @OneToMany((type) => Group, (group) => group.group_creator_id)
   group: Group[];
 
-  @ManyToMany(() => UniSubject)
-  @JoinTable({ name: 'subjectMembers' })
+  @ManyToMany(() => UniSubject, (uniSubject) => uniSubject.students)
+  @JoinTable({
+    name: 'SubjectMembers', // table name for the junction table of this relation
+    joinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'user_id',
+    },
+    inverseJoinColumn: {
+      name: 'subject_id',
+      referencedColumnName: 'subject_id',
+    },
+  })
   uniSubject: UniSubject[];
 
-  @ManyToMany(() => Group)
-  @JoinTable({ name: 'groupMembers' })
+  @ManyToMany(() => Group, (group) => group.user)
+  @JoinTable({ name: 'GroupMembers' })
   groupMembers: Group[];
 }

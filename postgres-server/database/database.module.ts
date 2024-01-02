@@ -5,13 +5,14 @@ import { ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      useFactory: (configService: ConfigService) => ({
+      useFactory: () => ({
         type: 'postgres',
-        host: configService.getOrThrow('POSTGRES_HOST'),
-        port: configService.getOrThrow('POSTGRES_PORT'),
-        database: configService.getOrThrow('POSTGRES_DATABASE'),
-        username: configService.getOrThrow('POSTGRES_USERNAME'),
-        password: configService.getOrThrow('POSTGRES_PASSWORD'),
+        host: 'insight.cf8mu8ksyya3.eu-central-1.rds.amazonaws.com',
+        port: 5432,
+        database: 'insight',
+        username: 'Vinko',
+        password: 'Vinko_324',
+        schema: 'insight-schema',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
         autoLoadEntities: true,
