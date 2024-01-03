@@ -7,10 +7,17 @@ import { GetSubjectByStudentDTO } from 'src/dto/uniSubjectDto/GetSubjectByStuden
 export class SubjectController {
   constructor(private readonly subjectService: SubjectService) {}
 
+  @Post('/getSubjectsByStudent')
+  async getSubjectsByStudent(
+    @Body() getSubjectByStudentDto: GetSubjectByStudentDTO,
+  ): Promise<UniSubject[]> {
+    return this.subjectService.getSubjectsByStudentID(getSubjectByStudentDto);
+  }
+
   @Post('/getSubjectByStudent')
   async getSubjectByStudent(
     @Body() getSubjectByStudentDto: GetSubjectByStudentDTO,
   ): Promise<UniSubject[]> {
-    return this.subjectService.getSubjectsByStudentID(getSubjectByStudentDto);
+    return this.subjectService.getSubjectByStudentID(getSubjectByStudentDto);
   }
 }

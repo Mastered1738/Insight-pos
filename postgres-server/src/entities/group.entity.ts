@@ -2,12 +2,13 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
+import { GroupMessage } from './groupMessage.entity';
 
 @Entity({ name: 'Group' })
 export class Group {
@@ -24,7 +25,9 @@ export class Group {
   })
   group_creator_id: User;
 
-  @ManyToMany(() => User)
-  @JoinTable({ name: 'GroupMembers' })
+  @ManyToMany(() => User, (user) => user.groups)
   user: User[];
+
+  @OneToMany(() => GroupMessage, (groupMessage) => groupMessage.group_id)
+  group_messages: GroupMessage[];
 }

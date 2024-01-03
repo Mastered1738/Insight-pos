@@ -17,10 +17,12 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
   host: 'postgresql-159670-0.cloudclusters.net',
   port: 18290,
-  database: 'Insight',
   username: 'Vinko',
   password: 'Vinko_324',
+  database: 'Insight',
+  schema: 'insight',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true,
   autoLoadEntities: true,
+  logging: true,
 };

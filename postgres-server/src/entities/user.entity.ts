@@ -11,6 +11,8 @@ import {
 import { UserType } from './userType.entity';
 import { Group } from './group.entity';
 import { UniSubject } from './uniSubject.entity';
+import { GroupMessage } from './groupMessage.entity';
+import { PrivateMessage } from './privateMessage.entity';
 
 @Entity({ name: 'User' })
 export class User {
@@ -53,6 +55,28 @@ export class User {
   uniSubject: UniSubject[];
 
   @ManyToMany(() => Group, (group) => group.user)
-  @JoinTable({ name: 'GroupMembers' })
-  groupMembers: Group[];
+  @JoinTable({
+    name: 'GroupMembers',
+    joinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'user_id',
+    },
+    inverseJoinColumn: {
+      name: 'group_id',
+      referencedColumnName: 'group_id',
+    },
+  })
+  groups: Group[];
+
+  @OneToMany(() => GroupMessage, (groupMessage) => groupMessage.sender_id)
+  group_messages: GroupMessage[];
+
+  @OneToMany(() => PrivateMessage, (privateMessage) => privateMessage.sender_id)
+  private_messages_sender: PrivateMessage[];
+
+  @OneToMany(
+    () => PrivateMessage,
+    (privateMessage) => privateMessage.receiver_id,
+  )
+  private_messages_receiver: PrivateMessage[];
 }

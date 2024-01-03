@@ -21,10 +21,23 @@ export class SubjectService {
   ): Promise<UniSubject[]> {
     return await this.subjectRepository.query(
       `SELECT *
-    FROM "insight-schema"."UniSubject" us
-    JOIN "insight-schema"."SubjectMembers" sm ON us.subject_id = sm.subject_id
-    WHERE sm.user_id = $1`,
+      FROM "UniSubject" us
+      JOIN "SubjectMembers" sm ON us.subject_id = sm.subject_id
+      WHERE sm.user_id = $1`,
       [getSubjectByStudentDto.user_id],
     );
+  }
+
+  async getSubjectByStudentID(
+    getSubjectByStudentDto: GetSubjectByStudentDTO,
+  ): Promise<UniSubject[]> {
+    return await this.subjectRepository.find({
+      relations: ['students'],
+      where: {
+        students: {
+          user_id: getSubjectByStudentDto.user_id,
+        },
+      },
+    });
   }
 }

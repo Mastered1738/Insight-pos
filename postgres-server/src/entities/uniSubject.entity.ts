@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 
-@Entity('UniSubject')
+@Entity({ name: 'UniSubject' })
 export class UniSubject {
   @PrimaryGeneratedColumn()
   subject_id: number;
@@ -12,7 +12,7 @@ export class UniSubject {
   @Column()
   subject_category: string;
 
-  @Column()
+  @Column({ nullable: true })
   subject_description: string;
 
   @ManyToMany(() => User, (user) => user.uniSubject)
