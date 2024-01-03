@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GetUserDto } from 'src/dto/userDto/getUser.dto';
+import { GetUserByUsernameAndPasswordDto } from 'src/dto/userDto/getUserbyUsername&Password.dto';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 
@@ -17,7 +17,7 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async getUser(getUserDto: GetUserDto): Promise<User> {
+  async getUser(getUserDto: GetUserByUsernameAndPasswordDto): Promise<User> {
     return await this.userRepository.findOne({
       where: {
         username: getUserDto.username,
