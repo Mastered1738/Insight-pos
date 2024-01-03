@@ -14,7 +14,7 @@ import { UniSubject } from './uniSubject.entity';
 import { GroupMessage } from './groupMessage.entity';
 import { PrivateMessage } from './privateMessage.entity';
 import { ProfilePost } from './profilePost.entity';
-import { SubjectPost } from './SubjectPost.entity';
+import { SubjectPost } from './subjectPost.entity';
 
 @Entity({ name: 'User' })
 export class User {
