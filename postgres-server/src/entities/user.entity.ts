@@ -13,6 +13,8 @@ import { Group } from './group.entity';
 import { UniSubject } from './uniSubject.entity';
 import { GroupMessage } from './groupMessage.entity';
 import { PrivateMessage } from './privateMessage.entity';
+import { ProfilePost } from './profilePost.entity';
+import { SubjectPost } from './SubjectPost.entity';
 
 @Entity({ name: 'User' })
 export class User {
@@ -79,4 +81,10 @@ export class User {
     (privateMessage) => privateMessage.receiver_id,
   )
   private_messages_receiver: PrivateMessage[];
+
+  @OneToMany(() => ProfilePost, (profilePost) => profilePost.user_id)
+  profilePost: ProfilePost[];
+
+  @OneToMany(() => SubjectPost, (subjectPost) => subjectPost.post_creator_id)
+  subjectPost: SubjectPost[];
 }
