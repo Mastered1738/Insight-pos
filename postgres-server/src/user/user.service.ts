@@ -19,9 +19,96 @@ export class UserService {
 
   async getUser(getUserDto: GetUserByUsernameAndPasswordDto): Promise<User> {
     return await this.userRepository.findOne({
+      relations: ['user_type'],
       where: {
         username: getUserDto.username,
         password: getUserDto.password,
+      },
+      select: {
+        user_id: true,
+        email: true,
+        username: true,
+        password: false,
+      },
+    });
+  }
+
+  async getUsersIFollow(): Promise<User[]> {
+    return await this.userRepository.find({
+      relations: ['followers'],
+      where: {
+        following: {
+          user_id: 1,
+        },
+      },
+      select: {
+        user_id: true,
+        email: true,
+        username: true,
+        password: false,
+        followers: {
+          user_id: false,
+          email: false,
+          username: false,
+          password: false,
+        },
+        following: {
+          user_id: false,
+          email: false,
+          username: false,
+          password: false,
+        },
+      },
+    });
+  }
+
+  async countAllUsersIAmFollowing(): Promise<number> {
+    return await this.userRepository.count({
+      relations: ['followers'],
+      where: {
+        following: {
+          user_id: 1,
+        },
+      },
+    });
+  }
+
+  async countAllMyFollowers(): Promise<number> {
+    return await this.userRepository.count({
+      relations: ['following'],
+      where: {
+        followers: {
+          user_id: 1,
+        },
+      },
+    });
+  }
+
+  async getUsersWhoFollowMe(): Promise<User[]> {
+    return await this.userRepository.find({
+      relations: ['following'],
+      where: {
+        followers: {
+          user_id: 1,
+        },
+      },
+      select: {
+        user_id: true,
+        email: true,
+        username: true,
+        password: false,
+        followers: {
+          user_id: false,
+          email: false,
+          username: false,
+          password: false,
+        },
+        following: {
+          user_id: false,
+          email: false,
+          username: false,
+          password: false,
+        },
       },
     });
   }

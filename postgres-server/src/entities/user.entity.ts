@@ -87,4 +87,23 @@ export class User {
 
   @OneToMany(() => SubjectPost, (subjectPost) => subjectPost.post_creator_id)
   subjectPost: SubjectPost[];
+
+  // Many-to-many relationship for followers
+  @ManyToMany(() => User, (user) => user.following)
+  @JoinTable({
+    name: 'UserFollowers',
+    joinColumn: {
+      name: 'follower_id',
+      referencedColumnName: 'user_id',
+    },
+    inverseJoinColumn: {
+      name: 'following_id',
+      referencedColumnName: 'user_id',
+    },
+  })
+  followers: User[];
+
+  // Many-to-many relationship for following
+  @ManyToMany(() => User, (user) => user.followers)
+  following: User[];
 }
