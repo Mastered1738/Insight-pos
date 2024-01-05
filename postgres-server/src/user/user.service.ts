@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GetUserByUsernameAndPasswordDto } from 'src/dto/userDto/getUserbyUsername&Password.dto';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
+import { StopWatch } from 'stopwatch-node';
 
 @Injectable()
 export class UserService {
@@ -18,7 +19,9 @@ export class UserService {
   }
 
   async getUser(getUserDto: GetUserByUsernameAndPasswordDto): Promise<User> {
-    return await this.userRepository.findOne({
+    const stopwatch = new StopWatch('stopwatch');
+    stopwatch.start();
+    const foundUser = await this.userRepository.findOne({
       relations: ['user_type'],
       where: {
         username: getUserDto.username,
@@ -29,8 +32,16 @@ export class UserService {
         email: true,
         username: true,
         password: false,
+        cover_file: true,
+        profile_file: true,
       },
     });
+    stopwatch.stop();
+    console.log('====================================');
+    console.log(stopwatch.getTotalTime());
+    console.log(foundUser.username);
+    console.log('====================================');
+    return foundUser;
   }
 
   async getUsersIFollow(): Promise<User[]> {
@@ -109,6 +120,28 @@ export class UserService {
           username: false,
           password: false,
         },
+      },
+    });
+  }
+
+  async updateUserProfile(
+    user_id: number,
+    updatedData: { cover_file?: Buffer; profile_file?: Buffer },
+  ): Promise<User> {
+    const updateProfile = await this.userRepository.update(
+      {
+        user_id: user_id,
+      },
+      updatedData,
+    );
+
+    if (updateProfile.affected === 0) {
+      throw new NotFoundException('Not found');
+    }
+
+    return this.userRepository.findOne({
+      where: {
+        user_id: user_id,
       },
     });
   }

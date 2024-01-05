@@ -38,6 +38,12 @@ export class User {
   })
   user_type: UserType;
 
+  @Column({ type: 'bytea', nullable: true })
+  cover_file: Buffer;
+
+  @Column({ type: 'bytea', nullable: true })
+  profile_file: Buffer;
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @OneToMany((type) => Group, (group) => group.group_creator_id)
   group: Group[];
