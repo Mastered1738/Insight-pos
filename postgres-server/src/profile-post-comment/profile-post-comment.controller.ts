@@ -2,16 +2,17 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ProfilePostCommentService } from './profile-post-comment.service';
 import { ProfilePostComment } from 'src/entities/profilePostComment.entity';
 import { ProfilePostCommentDTO } from 'src/dto/profilePostComment/createProfilePostComment.dto';
+import { GetCommentsByIDDTO } from 'src/dto/profilePostComment/getCommentsByID.dto';
 
-@Controller('profile-post-comment')
+@Controller('/profile-post-comment')
 export class ProfilePostCommentController {
   constructor(private readonly commentService: ProfilePostCommentService) {}
 
   @Post('/get-comments-byID')
   async getCommentsByID(
-    @Body() post_id: number,
+    @Body() getCommentsDTO: GetCommentsByIDDTO,
   ): Promise<ProfilePostComment[]> {
-    return await this.commentService.getCommentsByPostID(post_id);
+    return await this.commentService.getCommentsByPostID(getCommentsDTO);
   }
 
   @Post('/create-comment')

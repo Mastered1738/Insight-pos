@@ -20,8 +20,8 @@ export class ProfilePostComment {
     (profilePost) => profilePost.profile_post_comment,
   )
   @JoinColumn({
-    name: 'post_id',
-    referencedColumnName: 'post_id',
+    name: 'profile_post_id',
+    referencedColumnName: 'profile_post_id',
   })
   profile_post: ProfilePost;
 
