@@ -15,14 +15,18 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'postgresql-159670-0.cloudclusters.net',
-  port: 18290,
-  username: 'Vinko',
-  password: 'Vinko_324',
+  host: 'pg-260dbd96-insight-1.a.aivencloud.com',
+  port: 27072,
+  username: 'avnadmin',
+  password: 'AVNS_uRIoPtSKRGOy-LBIU9T',
   database: 'Insight',
   schema: 'insight',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true,
   autoLoadEntities: true,
   logging: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
+
