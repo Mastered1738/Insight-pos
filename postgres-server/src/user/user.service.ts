@@ -26,6 +26,13 @@ export class UserService {
       order: {
         username: 'ASC',
       },
+      select: {
+        user_id: true,
+        username: true,
+        password: false,
+        cover_file: false,
+        profile_file: false,
+      },
     });
   }
 
