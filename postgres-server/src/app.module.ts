@@ -3,7 +3,7 @@ import { UserModule } from './user/user.module';
 import { typeOrmConfig } from 'config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SubjectModule } from './uniSubject/subject.module';
-import { GroupModule } from './group/group.module';
+import { ChatGroupModule } from './chat-group/ChatGroup.module';
 import { GroupMessageModule } from './group-message/group-message.module';
 import { SubjectPostModule } from './subject-post/subject-post.module';
 import { ProfilePostModule } from './profile-post/profile-post.module';
@@ -14,7 +14,7 @@ import { PrivateMessageModule } from './private-message/private-message.module';
     TypeOrmModule.forRoot(typeOrmConfig),
     UserModule,
     SubjectModule,
-    GroupModule,
+    ChatGroupModule,
     GroupMessageModule,
     SubjectPostModule,
     ProfilePostModule,

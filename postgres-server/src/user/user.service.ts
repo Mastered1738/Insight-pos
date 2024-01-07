@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GetUserByUsernameAndPasswordDto } from 'src/dto/userDto/getUserbyUsername&Password.dto';
 import { User } from 'src/entities/user.entity';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { StopWatch } from 'stopwatch-node';
 
 @Injectable()
@@ -16,6 +16,17 @@ export class UserService {
     console.log(await this.userRepository.find());
     console.log('====================================');
     return await this.userRepository.find();
+  }
+
+  async getUsersbyUsername(username: string): Promise<User[]> {
+    return await this.userRepository.find({
+      where: {
+        username: ILike(`%${username}%`),
+      },
+      order: {
+        username: 'ASC',
+      },
+    });
   }
 
   async getUser(getUserDto: GetUserByUsernameAndPasswordDto): Promise<User> {
@@ -32,8 +43,8 @@ export class UserService {
         email: true,
         username: true,
         password: false,
-        cover_file: true,
         profile_file: true,
+        cover_file: true,
       },
     });
     stopwatch.stop();

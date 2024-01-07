@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserType } from './userType.entity';
-import { Group } from './group.entity';
+import { ChatGroup } from './chatGroup.entity';
 import { UniSubject } from './uniSubject.entity';
 import { GroupMessage } from './groupMessage.entity';
 import { PrivateMessage } from './privateMessage.entity';
@@ -45,8 +45,8 @@ export class User {
   profile_file: Buffer;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  @OneToMany((type) => Group, (group) => group.group_creator_id)
-  group: Group[];
+  @OneToMany((type) => ChatGroup, (chatgroup) => chatgroup.group_creator_id)
+  group: ChatGroup[];
 
   @ManyToMany(() => UniSubject, (uniSubject) => uniSubject.students)
   @JoinTable({
@@ -62,7 +62,7 @@ export class User {
   })
   uniSubject: UniSubject[];
 
-  @ManyToMany(() => Group, (group) => group.user)
+  @ManyToMany(() => ChatGroup, (chatgroup) => chatgroup.user)
   @JoinTable({
     name: 'GroupMembers',
     joinColumn: {
@@ -74,7 +74,7 @@ export class User {
       referencedColumnName: 'group_id',
     },
   })
-  groups: Group[];
+  groups: ChatGroup[];
 
   @OneToMany(() => GroupMessage, (groupMessage) => groupMessage.sender_id)
   group_messages: GroupMessage[];

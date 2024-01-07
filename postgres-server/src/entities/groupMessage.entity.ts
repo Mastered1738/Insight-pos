@@ -5,17 +5,17 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Group } from './group.entity';
+import { ChatGroup } from './chatGroup.entity';
 import { User } from './user.entity';
 
 @Entity({ name: 'GroupMessage' })
 export class GroupMessage {
-  @ManyToOne(() => Group, (group) => group.group_messages)
+  @ManyToOne(() => ChatGroup, (chatgroup) => chatgroup.group_messages)
   @JoinColumn({
     name: 'group_id',
     referencedColumnName: 'group_id',
   })
-  group_id: Group;
+  group_id: ChatGroup;
 
   @ManyToOne(() => User)
   @JoinColumn({

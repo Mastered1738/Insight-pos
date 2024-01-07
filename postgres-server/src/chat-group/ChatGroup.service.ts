@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { user_id_DTO } from 'src/dto/userDto/user_id.dto';
-import { Group } from 'src/entities/group.entity';
+import { ChatGroup } from 'src/entities/chatGroup.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class GroupService {
+export class ChatGroupService {
   constructor(
-    @InjectRepository(Group)
-    private readonly groupRepository: Repository<Group>,
+    @InjectRepository(ChatGroup)
+    private readonly groupRepository: Repository<ChatGroup>,
   ) {}
 
-  async getMyGroups(user_id_DTO: user_id_DTO): Promise<Group[]> {
+  async getMyGroups(user_id_DTO: user_id_DTO): Promise<ChatGroup[]> {
     return this.groupRepository.find({
       relations: ['user'],
       where: {

@@ -10,8 +10,8 @@ import {
 import { User } from './user.entity';
 import { GroupMessage } from './groupMessage.entity';
 
-@Entity({ name: 'Group' })
-export class Group {
+@Entity({ name: 'ChatGroup' })
+export class ChatGroup {
   @PrimaryGeneratedColumn()
   group_id: number;
 

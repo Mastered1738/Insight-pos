@@ -48,6 +48,11 @@ export class UserController {
     return await this.userService.countAllUsersIAmFollowing();
   }
 
+  @Post('/getUsersbyUsername')
+  async getUsersbyUsername(@Body() username: string): Promise<User[]> {
+    return await this.userService.getUsersbyUsername(username);
+  }
+
   @Post('/updateUserProfile')
   @UseInterceptors(
     FileFieldsInterceptor([
