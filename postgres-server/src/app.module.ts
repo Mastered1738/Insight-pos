@@ -8,6 +8,9 @@ import { GroupMessageModule } from './group-message/group-message.module';
 import { SubjectPostModule } from './subject-post/subject-post.module';
 import { ProfilePostModule } from './profile-post/profile-post.module';
 import { PrivateMessageModule } from './private-message/private-message.module';
+import { ProfilePostCommentService } from './profile-post-comment/profile-post-comment.service';
+import { ProfilePostCommentController } from './profile-post-comment/profile-post-comment.controller';
+import { ProfilePostCommentModule } from './profile-post-comment/profile-post-comment.module';
 
 @Module({
   imports: [
@@ -19,8 +22,9 @@ import { PrivateMessageModule } from './private-message/private-message.module';
     SubjectPostModule,
     ProfilePostModule,
     PrivateMessageModule,
+    ProfilePostCommentModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [ProfilePostCommentController],
+  providers: [ProfilePostCommentService],
 })
 export class AppModule {}
