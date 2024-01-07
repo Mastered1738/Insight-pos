@@ -24,4 +24,7 @@ export class ProfilePostComment {
     referencedColumnName: 'post_id',
   })
   profile_post: ProfilePost;
+
+  @Column({ type: 'timestamp' })
+  created_at: Date;
 }

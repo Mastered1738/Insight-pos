@@ -25,6 +25,9 @@ export class ProfilePostCommentService {
           profile_post_id: post_id,
         },
       },
+      order: {
+        created_at: 'DESC',
+      },
     });
   }
 }
