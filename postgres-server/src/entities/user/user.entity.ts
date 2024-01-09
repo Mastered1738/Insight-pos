@@ -9,12 +9,12 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserType } from './userType.entity';
-import { ChatGroup } from './chatGroup.entity';
-import { UniSubject } from './uniSubject.entity';
-import { GroupMessage } from './groupMessage.entity';
-import { PrivateMessage } from './privateMessage.entity';
+import { ChatGroup } from '../chat/group/chatGroup.entity';
+import { UniSubject } from '../subjects/uniSubject.entity';
+import { GroupMessage } from '../chat/group/groupMessage.entity';
+import { PrivateMessage } from '../chat/private/privateMessage.entity';
 import { ProfilePost } from './profilePost.entity';
-import { SubjectPost } from './subjectPost.entity';
+import { SubjectPost } from '../subjects/subjectPost.entity';
 
 @Entity({ name: 'User' })
 export class User {

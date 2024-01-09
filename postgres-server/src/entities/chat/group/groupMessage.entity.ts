@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ChatGroup } from './chatGroup.entity';
-import { User } from './user.entity';
+import { User } from '../../user/user.entity';
 
 @Entity({ name: 'GroupMessage' })
 export class GroupMessage {

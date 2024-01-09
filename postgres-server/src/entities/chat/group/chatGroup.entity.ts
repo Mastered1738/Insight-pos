@@ -7,7 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from './user.entity';
+import { User } from '../../user/user.entity';
 import { GroupMessage } from './groupMessage.entity';
 
 @Entity({ name: 'ChatGroup' })
