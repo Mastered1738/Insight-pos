@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GroupMessageService } from './group-message.service';
 import { GroupMessageController } from './group-message.controller';
-import { GroupMessage } from 'src/entities/groupMessage.entity';
+import { GroupMessage } from 'src/entities/chat/group/groupMessage.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

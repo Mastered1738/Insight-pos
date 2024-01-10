@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SubjectService } from './subject.service';
-import { UniSubject } from 'src/entities/uniSubject.entity';
+import { UniSubject } from 'src/entities/subjects/uniSubject.entity';
 import { GetSubjectByStudentDTO } from 'src/dto/uniSubjectDto/GetSubjectByStudent.dto';
 
 @Controller('/subject')

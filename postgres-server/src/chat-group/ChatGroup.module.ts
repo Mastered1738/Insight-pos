@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ChatGroupService } from './ChatGroup.service';
-import { ChatGroup } from 'src/entities/chatGroup.entity';
+import { ChatGroup } from 'src/entities/chat/group/chatGroup.entity';
 import { ChatGroupController } from './ChatGroup.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 

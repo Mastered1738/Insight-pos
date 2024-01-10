@@ -15,6 +15,15 @@ import { GroupMessage } from '../chat/group/groupMessage.entity';
 import { PrivateMessage } from '../chat/private/privateMessage.entity';
 import { ProfilePost } from './profilePost.entity';
 import { SubjectPost } from '../subjects/subjectPost.entity';
+import { ServerGroup } from '../userServer/serverGroup.entity';
+import { ServerGroupPost } from '../userServer/serverGroupPost.entity';
+import { Test } from '../test/test.entity';
+import { TestScore } from '../test/testScore.entity';
+import { AnswerOpenEnd } from '../test/answer/answerOpenEnd.entity';
+import { AnswerChooseOne } from '../test/answer/answerChooseOne.entity';
+import { AnswerBool } from '../test/answer/answerBool.entity';
+import { SubjectPostComment } from '../subjects/subjectPostComment.entity';
+import { ShopTransactions } from '../shop/shopTransactions.entity';
 
 @Entity({ name: 'User' })
 export class User {
@@ -112,4 +121,37 @@ export class User {
   // Many-to-many relationship for following
   @ManyToMany(() => User, (user) => user.followers)
   following: User[];
+
+  @OneToMany(() => ServerGroup, (serverGroup) => serverGroup.group_creator)
+  server_group: ServerGroup[];
+
+  @OneToMany(() => ServerGroupPost, (serverGroupPost) => serverGroupPost.user)
+  server_group_post: ServerGroupPost[];
+
+  @OneToMany(() => Test, (test) => test.user)
+  test: Test[];
+
+  @OneToMany(() => TestScore, (testScore) => testScore.user)
+  testScore: TestScore[];
+
+  @OneToMany(() => AnswerBool, (answer_bool) => answer_bool.user)
+  answer_bool: AnswerBool[];
+
+  @OneToMany(
+    () => AnswerChooseOne,
+    (answer_choose_one) => answer_choose_one.user,
+  )
+  answer_choose_one: AnswerChooseOne[];
+
+  @OneToMany(() => AnswerOpenEnd, (answer_open_end) => answer_open_end.user)
+  answer_open_end: AnswerOpenEnd[];
+
+  @OneToMany(
+    () => SubjectPostComment,
+    (subjectPostComment) => subjectPostComment.user,
+  )
+  subject_post_comment: SubjectPostComment[];
+
+  @OneToMany(() => ShopTransactions, (transactions) => transactions.user)
+  transaction: ShopTransactions[];
 }

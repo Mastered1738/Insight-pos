@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SubjectPostController } from './subject-post.controller';
-import { SubjectPost } from 'src/entities/subjectPost.entity';
+import { SubjectPost } from 'src/entities/subjects/subjectPost.entity';
 import { SubjectPostService } from './subject-post.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 

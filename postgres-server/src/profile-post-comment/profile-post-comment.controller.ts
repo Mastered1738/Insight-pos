@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ProfilePostCommentService } from './profile-post-comment.service';
-import { ProfilePostComment } from 'src/entities/profilePostComment.entity';
+import { ProfilePostComment } from 'src/entities/user/profilePostComment.entity';
 import { ProfilePostCommentDTO } from 'src/dto/profilePostComment/createProfilePostComment.dto';
 import { GetCommentsByIDDTO } from 'src/dto/profilePostComment/getCommentsByID.dto';
 

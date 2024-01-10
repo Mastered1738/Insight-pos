@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProfilePostComment } from 'src/entities/profilePostComment.entity';
+import { ProfilePostComment } from 'src/entities/user/profilePostComment.entity';
 import { ProfilePostCommentController } from './profile-post-comment.controller';
 import { ProfilePostCommentService } from './profile-post-comment.service';
 

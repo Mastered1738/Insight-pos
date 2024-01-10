@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProfilePostCommentDTO } from 'src/dto/profilePostComment/createProfilePostComment.dto';
 import { GetCommentsByIDDTO } from 'src/dto/profilePostComment/getCommentsByID.dto';
-import { ProfilePostComment } from 'src/entities/profilePostComment.entity';
+import { ProfilePostComment } from 'src/entities/user/profilePostComment.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

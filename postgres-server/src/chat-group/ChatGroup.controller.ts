@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ChatGroupService } from './ChatGroup.service';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { user_id_DTO } from 'src/dto/userDto/user_id.dto';
-import { ChatGroup } from 'src/entities/chatGroup.entity';
+import { ChatGroup } from 'src/entities/chat/group/chatGroup.entity';
 
 @Controller('/group')
 export class ChatGroupController {
