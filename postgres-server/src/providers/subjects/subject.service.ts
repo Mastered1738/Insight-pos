@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GetSubjectByStudentDTO } from 'src/dto/uniSubjectDto/GetSubjectByStudent.dto';
+import { GetSubjectByStudentDTO } from 'src/dto/subjects/GetSubjectByStudent.dto';
 //import { GetSubjectByStudentDTO } from 'src/dto/uniSubjectDto/GetSubjectByStudent.dto';
 import { UniSubject } from 'src/entities/subjects/uniSubject.entity';
 import { Repository } from 'typeorm';

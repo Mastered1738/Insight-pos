@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { user_id_DTO } from 'src/dto/userDto/user_id.dto';
+import { user_id_DTO } from 'src/dto/user/user_id.dto';
 import { ChatGroup } from 'src/entities/chat/group/chatGroup.entity';
 import { Repository } from 'typeorm';
 

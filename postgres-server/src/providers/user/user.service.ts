@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GetUserByUsernameAndPasswordDto } from 'src/dto/userDto/getUserbyUsername&Password.dto';
+import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&Password.dto';
 import { User } from 'src/entities/user/user.entity';
 import { ILike, Repository } from 'typeorm';
 import { StopWatch } from 'stopwatch-node';

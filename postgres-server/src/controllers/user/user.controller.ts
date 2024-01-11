@@ -9,7 +9,7 @@ import {
 import { UserService } from '../../providers/user/user.service';
 import { User } from 'src/entities/user/user.entity';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { GetUserByUsernameAndPasswordDto } from 'src/dto/userDto/getUserbyUsername&Password.dto';
+import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&Password.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
 
 @Controller('/user')
