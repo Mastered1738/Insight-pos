@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
+import { UserModule } from './modules/user/user.module';
 import { typeOrmConfig } from 'config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SubjectModule } from './uniSubject/subject.module';
-import { ChatGroupModule } from './chat-group/ChatGroup.module';
-import { GroupMessageModule } from './group-message/group-message.module';
-import { SubjectPostModule } from './subject-post/subject-post.module';
-import { ProfilePostModule } from './profile-post/profile-post.module';
-import { PrivateMessageModule } from './private-message/private-message.module';
-import { ProfilePostCommentModule } from './profile-post-comment/profile-post-comment.module';
+import { SubjectModule } from './modules/subjects/subject.module';
+import { ChatGroupModule } from './modules/chat/ChatGroup.module';
+import { GroupMessageModule } from './modules/chat/group-message.module';
+import { SubjectPostModule } from './modules/subjects/subject-post.module';
+import { ProfilePostModule } from './modules/user/profile-post.module';
+import { PrivateMessageModule } from './modules/chat/private-message.module';
+import { ProfilePostCommentModule } from './modules/user/profile-post-comment.module';
 
 @Module({
   imports: [
