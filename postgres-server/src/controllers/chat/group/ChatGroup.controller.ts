@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ChatGroupService } from '../../../providers/chat/ChatGroup.service';
+import { ChatGroupService } from '../../../providers/chat/group/ChatGroup.service';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { user_id_DTO } from 'src/dto/userDto/user_id.dto';
 import { ChatGroup } from 'src/entities/chat/group/chatGroup.entity';
