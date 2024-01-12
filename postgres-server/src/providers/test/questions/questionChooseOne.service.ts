@@ -10,5 +10,5 @@ export class QuestionChooseOneService {
     private questionRepository: Repository<QuestionChooseOne>,
   ) {}
 
-  async createQuestion(): Promise<QuestionChooseOne> {}
+  //async createQuestion(): Promise<QuestionChooseOne> {}
 }

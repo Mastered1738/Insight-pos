@@ -10,5 +10,5 @@ export class QuestionOpenEndService {
     private questionRepository: Repository<QuestionOpenEnd>,
   ) {}
 
-  async createQuestion(): Promise<QuestionOpenEnd> {}
+  //async createQuestion(): Promise<QuestionOpenEnd> {}
 }

@@ -10,5 +10,5 @@ export class AnswerBoolService {
     private questionRepository: Repository<AnswerBool>,
   ) {}
 
-  async createQuestion(): Promise<AnswerBool> {}
+  // async createQuestion(): Promise<AnswerBool> {}
 }
