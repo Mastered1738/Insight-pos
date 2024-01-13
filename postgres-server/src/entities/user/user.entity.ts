@@ -154,4 +154,7 @@ export class User {
 
   @OneToMany(() => ShopTransactions, (transactions) => transactions.user)
   transaction: ShopTransactions[];
+
+  @Column()
+  insight_coins: number;
 }

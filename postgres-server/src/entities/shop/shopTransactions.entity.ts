@@ -27,7 +27,7 @@ export class ShopTransactions {
   @Column()
   item_quantity: number;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   bought_at_time: Date;
 
   @Column({ nullable: true })
