@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../user/user.entity';
-import { UniSubject } from './uniSubject.entity';
+import { SubjectPost } from './subjectPost.entity';
 
 @Entity({ name: 'SubjectPostComment' })
 export class SubjectPostComment {
@@ -23,10 +23,13 @@ export class SubjectPostComment {
   })
   user: User;
 
-  @ManyToOne(() => UniSubject, (subject) => subject.subject_post_comment)
+  @ManyToOne(
+    () => SubjectPost,
+    (subjectPost) => subjectPost.subject_post_comment,
+  )
   @JoinColumn({
-    name: 'subject_id',
-    referencedColumnName: 'subject_id',
+    name: 'subject_post_id',
+    referencedColumnName: 'subject_post_id',
   })
-  subject: UniSubject;
+  subjectPost: SubjectPost;
 }

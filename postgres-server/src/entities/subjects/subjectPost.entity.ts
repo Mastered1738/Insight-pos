@@ -3,9 +3,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../user/user.entity';
+import { SubjectPostComment } from './subjectPostComment.entity';
+import { UniSubject } from './uniSubject.entity';
 
 @Entity({ name: 'SubjectPost' })
 export class SubjectPost {
@@ -20,6 +23,19 @@ export class SubjectPost {
 
   @Column({ nullable: true, type: 'bytea' })
   file: Buffer;
+
+  @ManyToOne(() => UniSubject, (subject) => subject.subjectPost)
+  @JoinColumn({
+    name: 'subject_id',
+    referencedColumnName: 'subject_id',
+  })
+  subject: UniSubject;
+
+  @OneToMany(
+    () => SubjectPostComment,
+    (subjectPostComment) => subjectPostComment.subjectPost,
+  )
+  subject_post_comment: SubjectPostComment[];
 
   @ManyToOne(() => User)
   @JoinColumn({
