@@ -13,13 +13,13 @@ export class ShopItems {
   item_description: string;
 
   @Column()
-  nullable_available: number;
+  number_available: number;
 
   @Column()
   real_money_cost: number;
 
   @Column()
-  inisght_coins_cost: number;
+  insight_coins_cost: number;
 
   @OneToMany(() => ShopTransactions, (transactions) => transactions.item)
   transaction: ShopTransactions[];
