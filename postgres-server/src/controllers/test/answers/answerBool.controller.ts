@@ -1,6 +1,6 @@
 import { Controller, Post } from '@nestjs/common';
 import { GlobalAnswerService } from '../../../providers/test/answers/answerGlobal.service';
-import { AllTestAnswers } from 'src/dto/test/allAnswers.dto';
+import { AllTestAnswers } from 'src/dto/test/answers/allAnswers.dto';
 
 @Controller('/boolAnswers')
 export class AnswerBoolController {

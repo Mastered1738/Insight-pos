@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AllTestQuestions } from 'src/dto/test/allQuestions.dto';
+import { AllTestQuestions } from 'src/dto/test/questions/allQuestions.dto';
 import { QuestionBool } from 'src/entities/test/question/questionBool.entity';
 import { QuestionChooseOne } from 'src/entities/test/question/questionChooseOne.entity';
 import { QuestionOpenEnd } from 'src/entities/test/question/questionOpenEnd.entity';

@@ -1,5 +1,5 @@
 import { Controller, Post } from '@nestjs/common';
-import { AllTestQuestions } from 'src/dto/test/allQuestions.dto';
+import { AllTestQuestions } from 'src/dto/test/questions/allQuestions.dto';
 import { GlobalQuestionService } from 'src/providers/test/questions/questionGlobal.service';
 
 @Controller('/boolQuestions')
