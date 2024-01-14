@@ -12,14 +12,14 @@ export class PrivateMessage {
   @PrimaryGeneratedColumn()
   message_id: number;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.private_messages_sender)
   @JoinColumn({
     name: 'sender_id',
     referencedColumnName: 'user_id',
   })
   sender_id: User;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.private_messages_receiver)
   @JoinColumn({
     name: 'receiver_id',
     referencedColumnName: 'user_id',
