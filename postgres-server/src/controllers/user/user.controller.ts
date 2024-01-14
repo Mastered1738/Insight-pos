@@ -11,6 +11,7 @@ import { User } from 'src/entities/user/user.entity';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&Password.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
+import { user_id_DTO } from 'src/dto/user/user_id.dto';
 
 @Controller('/user')
 export class UserController {
@@ -86,5 +87,10 @@ export class UserController {
     }
 
     return await this.userService.updateUserProfile(user_id_parsed, updateData);
+  }
+
+  @Post('/get-private-messages')
+  async getUserChats(@Body() user_id_DTO: user_id_DTO): Promise<User[]> {
+    return await this.userService.getUserChats(user_id_DTO.user_id);
   }
 }

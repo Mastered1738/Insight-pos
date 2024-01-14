@@ -7,7 +7,7 @@ import { PrivateMessageService } from 'src/providers/chat/private/private-messag
 export class PrivateMessageController {
   constructor(private readonly messageService: PrivateMessageService) {}
 
-  @Post('/get-chats')
+  @Post('/get-private-chats')
   async getPrivateMessageChats(
     @Body() user_id: user_id_DTO,
   ): Promise<PrivateMessage[]> {

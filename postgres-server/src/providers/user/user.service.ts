@@ -4,11 +4,14 @@ import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&
 import { User } from 'src/entities/user/user.entity';
 import { ILike, Repository } from 'typeorm';
 import { StopWatch } from 'stopwatch-node';
+import { PrivateMessage } from 'src/entities/chat/private/privateMessage.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(PrivateMessage)
+    private privateMessageRepository: Repository<PrivateMessage>,
   ) {}
 
   async getAllUsers(): Promise<User[]> {
@@ -162,5 +165,24 @@ export class UserService {
         user_id: user_id,
       },
     });
+  }
+
+  async getUserChats(user_id: number): Promise<User[]> {
+    return await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.private_messages_sender', 'sentMessages')
+      .leftJoinAndSelect('user.private_messages_receiver', 'receivedMessages')
+      .where('receivedMessages.receiver_id != :userId', { userId: user_id })
+      .andWhere('receivedMessages.sender_id = :userId', { userId: user_id })
+      .orWhere('sentMessages.sender_id != :userId', { userId: user_id })
+      .andWhere('sentMessages.receiver_id = :userId', { userId: user_id })
+      .andWhere('user.user_id != :userId', { userId: user_id })
+      .select([
+        'user.user_id',
+        'user.email',
+        'user.username',
+        'user.profile_file',
+      ])
+      .getMany();
   }
 }
