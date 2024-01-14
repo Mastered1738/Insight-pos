@@ -27,7 +27,7 @@ export class GroupMessage {
   @Column()
   content: string;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   timestamp: Date;
 
   @PrimaryGeneratedColumn()

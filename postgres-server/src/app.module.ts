@@ -7,7 +7,7 @@ import { ChatGroupModule } from './modules/chat/group/ChatGroup.module';
 import { GroupMessageModule } from './modules/chat/group/group-message.module';
 import { SubjectPostModule } from './modules/subjects/subject-post.module';
 import { ProfilePostModule } from './modules/user/profile-post.module';
-import { PrivateMessageModule } from './modules/chat/private/private-message.module';
+import { PrivateMessageModule } from './modules/chat/private/private-message-gateway.module';
 import { ProfilePostCommentModule } from './modules/user/profile-post-comment.module';
 import { EventModule } from './modules/event/event.module';
 import { ShopItemsModule } from './modules/shop/shopItems.module';

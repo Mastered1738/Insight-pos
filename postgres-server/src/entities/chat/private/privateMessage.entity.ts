@@ -29,7 +29,7 @@ export class PrivateMessage {
   @Column()
   content: string;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   timestamp: Date;
 
   @Column({ default: false })
