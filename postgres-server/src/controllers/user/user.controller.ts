@@ -11,6 +11,7 @@ import { User } from 'src/entities/user/user.entity';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&Password.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { user_id_DTO } from 'src/dto/user/user_id.dto';
 
 @Controller('/user')
