@@ -10,14 +10,22 @@ export class PrivateMessageService {
     private messageRepository: Repository<PrivateMessage>,
   ) {}
 
-  async getPrivateMessagesByUserID(user_id: number): Promise<PrivateMessage[]> {
+  async getPrivateMessagesByUserID(
+    user_id: number,
+    other_user_id: number,
+  ): Promise<PrivateMessage[]> {
     const tryFindBySenderID = await this.messageRepository.find({
-      relations: ['sender_id'],
-      where: {
-        sender_id: {
-          user_id: user_id,
+      relations: ['sender_id', 'receiver_id'],
+      where: [
+        {
+          sender_id: { user_id: user_id },
+          receiver_id: { user_id: other_user_id },
         },
-      },
+        {
+          receiver_id: { user_id: user_id },
+          sender_id: { user_id: other_user_id },
+        },
+      ],
       select: {
         sender_id: {
           user_id: true,
