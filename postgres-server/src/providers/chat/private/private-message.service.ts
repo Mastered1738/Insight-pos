@@ -18,6 +18,26 @@ export class PrivateMessageService {
           user_id: user_id,
         },
       },
+      select: {
+        sender_id: {
+          user_id: true,
+          username: true,
+          password: false,
+          cover_file: false,
+          profile_file: false,
+        },
+        receiver_id: {
+          user_id: true,
+          username: true,
+          password: false,
+          cover_file: false,
+          profile_file: false,
+        },
+      },
+      order: {
+        timestamp: 'DESC',
+      },
+      take: 30,
     });
 
     if (tryFindBySenderID == undefined) {
@@ -28,6 +48,26 @@ export class PrivateMessageService {
             user_id: user_id,
           },
         },
+        select: {
+          sender_id: {
+            user_id: true,
+            username: true,
+            password: false,
+            cover_file: false,
+            profile_file: false,
+          },
+          receiver_id: {
+            user_id: true,
+            username: true,
+            password: false,
+            cover_file: false,
+            profile_file: false,
+          },
+        },
+        order: {
+          timestamp: 'DESC',
+        },
+        take: 30,
       });
       return tryFindByReceiverID;
     } else {
