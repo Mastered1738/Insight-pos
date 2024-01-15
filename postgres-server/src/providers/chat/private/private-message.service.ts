@@ -32,14 +32,14 @@ export class PrivateMessageService {
           username: true,
           password: false,
           cover_file: false,
-          profile_file: false,
+          profile_file: true,
         },
         receiver_id: {
           user_id: true,
           username: true,
           password: false,
           cover_file: false,
-          profile_file: false,
+          profile_file: true,
         },
       },
       order: {
