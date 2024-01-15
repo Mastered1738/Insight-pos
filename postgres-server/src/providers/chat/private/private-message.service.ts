@@ -43,7 +43,7 @@ export class PrivateMessageService {
         },
       },
       order: {
-        timestamp: 'DESC',
+        timestamp: 'ASC',
       },
       take: 30,
     });
