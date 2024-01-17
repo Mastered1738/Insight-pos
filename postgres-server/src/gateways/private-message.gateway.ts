@@ -8,9 +8,12 @@ import {
 import { Server, Socket } from 'socket.io';
 //import { PrivateMessageDTO } from 'src/dto/chat/private/privateMessage.dto';
 import { concatenateUsernamesAndNumbers } from './concat';
+import { PrivateMessageService } from 'src/providers/chat/private/private-message.service';
 
 @WebSocketGateway()
 export class PrivateMessageWebSocketGateway {
+  constructor(private privateMessageService: PrivateMessageService) {}
+
   @WebSocketServer()
   server: Server;
 
@@ -41,7 +44,8 @@ export class PrivateMessageWebSocketGateway {
     console.log(privateMessage);
     console.log('====================================');
     this.server.to(privateMessage.roomName).emit('private-message', {
-      content: privateMessage,
+      content: this.privateMessageService.createMessage(privateMessage),
     });
+    this.privateMessageService.createMessage(privateMessage);
   }
 }
