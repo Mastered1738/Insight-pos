@@ -7,8 +7,9 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 //import { PrivateMessageDTO } from 'src/dto/chat/private/privateMessage.dto';
-import { concatenateUsernamesAndNumbers } from './concat';
+import { concatenateNumbers } from './concat';
 import { PrivateMessageService } from 'src/providers/chat/private/private-message.service';
+import { PrivateMessageDTO } from 'src/dto/chat/private/PrivateMessage.dto';
 
 @WebSocketGateway()
 export class PrivateMessageWebSocketGateway {
@@ -24,10 +25,8 @@ export class PrivateMessageWebSocketGateway {
     @ConnectedSocket() client: Socket,
     @MessageBody() enteringMessage: any,
   ) {
-    const roomName = concatenateUsernamesAndNumbers(
-      enteringMessage.username1,
+    const roomName = concatenateNumbers(
       enteringMessage.user_id1,
-      enteringMessage.username2,
       enteringMessage.user_id2,
     );
     this.server.in(client.id).socketsJoin(roomName);
@@ -37,15 +36,20 @@ export class PrivateMessageWebSocketGateway {
   @SubscribeMessage('private-message')
   async onPrivateMessage(
     @ConnectedSocket() client: Socket,
-    @MessageBody() privateMessage: any,
+    @MessageBody() privateMessage: PrivateMessageDTO,
   ) {
+    const roomName = concatenateNumbers(
+      privateMessage.sender_id,
+      privateMessage.receiver_id,
+    );
     console.log('Connected client: ' + client.id);
     console.log('====================================');
     console.log(privateMessage);
     console.log('====================================');
-    this.server.to(privateMessage.roomName).emit('private-message', {
-      content: this.privateMessageService.createMessage(privateMessage),
+    const response =
+      await this.privateMessageService.createMessage(privateMessage);
+    this.server.to(roomName).emit('private-message', {
+      response,
     });
-    this.privateMessageService.createMessage(privateMessage);
   }
 }
