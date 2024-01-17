@@ -14,7 +14,6 @@ export class PrivateMessageService {
   ) {}
 
   async createMessage(message: PrivateMessageDTO): Promise<PrivateMessage> {
-    // Find sender and receiver entities based on their IDs
     const sender = await this.userRepository.findOne({
       where: {
         user_id: message.sender_id,
@@ -40,13 +39,11 @@ export class PrivateMessageService {
       },
     });
 
-    // Create a new PrivateMessage instance
     const newMessage = new PrivateMessage();
     newMessage.sender_id = sender;
     newMessage.receiver_id = receiver;
     newMessage.content = message.content;
 
-    // Save the new PrivateMessage instance
     return await this.messageRepository.save(newMessage);
   }
 

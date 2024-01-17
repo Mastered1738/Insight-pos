@@ -11,7 +11,11 @@ import { concatenateNumbers } from './concat';
 import { PrivateMessageService } from 'src/providers/chat/private/private-message.service';
 import { PrivateMessageDTO } from 'src/dto/chat/private/PrivateMessage.dto';
 
-@WebSocketGateway()
+@WebSocketGateway({
+  cors: {
+    origin: '*',
+  },
+})
 export class PrivateMessageWebSocketGateway {
   constructor(private privateMessageService: PrivateMessageService) {}
 

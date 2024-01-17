@@ -34,7 +34,7 @@ export class UserService {
         username: true,
         password: false,
         cover_file: false,
-        profile_file: false,
+        profile_file: true,
       },
     });
   }
