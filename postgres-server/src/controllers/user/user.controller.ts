@@ -13,6 +13,7 @@ import { GetUserByUsernameAndPasswordDto } from 'src/dto/user/getUserbyUsername&
 import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { user_id_DTO } from 'src/dto/user/user_id.dto';
+import { GetUserByUsernameDTO } from 'src/dto/user/getUserByUsername.dto';
 
 @Controller('/user')
 export class UserController {
@@ -51,8 +52,10 @@ export class UserController {
   }
 
   @Post('/getUsersbyUsername')
-  async getUsersbyUsername(@Body() username: string): Promise<User[]> {
-    return await this.userService.getUsersbyUsername(username);
+  async getUsersbyUsername(
+    @Body() usernameDTO: GetUserByUsernameDTO,
+  ): Promise<User[]> {
+    return await this.userService.getUsersbyUsername(usernameDTO.username);
   }
 
   @Post('/updateUserProfile')

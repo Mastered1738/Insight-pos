@@ -36,6 +36,7 @@ export class UserService {
         cover_file: false,
         profile_file: true,
       },
+      take: 5,
     });
   }
 
