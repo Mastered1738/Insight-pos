@@ -6,7 +6,6 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-//import { PrivateMessageDTO } from 'src/dto/chat/private/privateMessage.dto';
 import { concatenateNumbers } from './concat';
 import { PrivateMessageService } from 'src/providers/chat/private/private-message.service';
 import { PrivateMessageDTO } from 'src/dto/chat/private/PrivateMessage.dto';

@@ -30,4 +30,16 @@ export class ChatGroupService {
       },
     });
   }
+
+  async getGroupByID(group_id: number): Promise<ChatGroup> {
+    return await this.groupRepository.findOne({
+      where: {
+        group_id: group_id,
+      },
+      select: {
+        group_id: true,
+        group_name: true,
+      },
+    });
+  }
 }
