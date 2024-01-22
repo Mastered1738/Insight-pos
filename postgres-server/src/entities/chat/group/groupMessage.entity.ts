@@ -15,7 +15,7 @@ export class GroupMessage {
     name: 'group_id',
     referencedColumnName: 'group_id',
   })
-  group_id: ChatGroup;
+  chatGroup: ChatGroup;
 
   @ManyToOne(() => User)
   @JoinColumn({

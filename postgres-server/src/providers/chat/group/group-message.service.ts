@@ -19,9 +19,9 @@ export class GroupMessageService {
 
   async getGroupMessagesByGroupID(group_id: number): Promise<GroupMessage[]> {
     return await this.groupMessageRepository.find({
-      relations: ['group_id'],
+      relations: ['chatGroup', 'sender_id'],
       where: {
-        group_id: {
+        chatGroup: {
           group_id: group_id,
         },
       },
@@ -29,7 +29,7 @@ export class GroupMessageService {
         message_id: true,
         content: true,
         timestamp: true,
-        group_id: {
+        chatGroup: {
           group_id: true,
           group_messages: false,
           group_name: false,
@@ -74,7 +74,7 @@ export class GroupMessageService {
     });
 
     const newMessage = new GroupMessage();
-    newMessage.group_id = group;
+    newMessage.chatGroup = group;
     newMessage.sender_id = sender;
     newMessage.content = message.content;
 

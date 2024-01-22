@@ -28,6 +28,6 @@ export class ChatGroup {
   @ManyToMany(() => User, (user) => user.groups)
   user: User[];
 
-  @OneToMany(() => GroupMessage, (groupMessage) => groupMessage.group_id)
+  @OneToMany(() => GroupMessage, (groupMessage) => groupMessage.chatGroup)
   group_messages: GroupMessage[];
 }
