@@ -5,6 +5,7 @@ import { User } from 'src/entities/user/user.entity';
 import { ILike, Repository } from 'typeorm';
 import { StopWatch } from 'stopwatch-node';
 import { PrivateMessage } from 'src/entities/chat/private/privateMessage.entity';
+import { CreateUserDTO } from 'src/dto/user/createUser.dto';
 
 @Injectable()
 export class UserService {
@@ -185,5 +186,15 @@ export class UserService {
         'user.profile_file',
       ])
       .getMany();
+  }
+
+  async createUser(user_dto: CreateUserDTO): Promise<User> {
+    const user = new User();
+
+    user.username = user_dto.username;
+    user.password = user_dto.password;
+    user.email = user_dto.email;
+
+    return await this.userRepository.save(user);
   }
 }

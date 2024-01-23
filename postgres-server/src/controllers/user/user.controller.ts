@@ -14,6 +14,7 @@ import { FileFieldsInterceptor } from '@nestjs/platform-express/multer';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { user_id_DTO } from 'src/dto/user/user_id.dto';
 import { GetUserByUsernameDTO } from 'src/dto/user/getUserByUsername.dto';
+import { CreateUserDTO } from 'src/dto/user/createUser.dto';
 
 @Controller('/user')
 export class UserController {
@@ -96,5 +97,10 @@ export class UserController {
   @Post('/get-private-messages')
   async getUserChats(@Body() user_id_DTO: user_id_DTO): Promise<User[]> {
     return await this.userService.getUserChats(user_id_DTO.user_id);
+  }
+
+  @Post('/create-user')
+  async createUser(@Body() user_dto: CreateUserDTO): Promise<User> {
+    return await this.userService.createUser(user_dto);
   }
 }
